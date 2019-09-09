@@ -17,6 +17,11 @@ repository=http://github.com/ResilientDar/ODKTrace2WKT
 hasProcessingProvider=no
 
 changelog=
+    Version 0.1
+    - Complete convertion of geotrace to wkt
+    - Automatic geotrace column detection
+    - Automatic file delimiter detection
+    - Load result layer after completing convertion
 
 # Tags are comma separated with spaces allowed
 tags=csv, delimitation, wkt
