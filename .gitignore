@@ -36,8 +36,6 @@ setup.cfg
 .svn
 .vagrant
 venv
-/iso/utilities/test/[temporary file].*
-/iso/utilities/test/[temporary_file]/
 [temporary file].*
 [temporary_file]
 __pycache__
