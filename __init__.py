@@ -33,6 +33,4 @@ def classFactory(iface):  # pylint: disable=invalid-name
     """
     #
     from .odktrace2wkt import ODKTrace2WKT
-    import pydevd_pycharm
-    pydevd_pycharm.settrace('192.168.0.168', port=9876, stdoutToServer = True, stderrToServer = True)
     return ODKTrace2WKT(iface)
