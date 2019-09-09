@@ -1,6 +1,8 @@
 ODKTrace2WKT 
 =======
 
+This is a QGIS plugin that converts ODK geotraces to Well-Known Text
+
 ## Installation
 
 ### Install from source code
