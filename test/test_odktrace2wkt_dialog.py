@@ -14,11 +14,12 @@ __copyright__ = 'Copyright 2019, Samweli Mwakisambwe'
 
 import unittest
 
-from qgis.PyQt.QtGui import QDialogButtonBox, QDialog
+from qgis.PyQt.QtWidgets import QDialogButtonBox, QDialog
 
 from odktrace2wkt_dialog import ODKTrace2WKTDialog
 
-from utilities import get_qgis_app
+from .utilities import get_qgis_app
+
 QGIS_APP = get_qgis_app()
 
 
