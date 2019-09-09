@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/odktrace2wkt" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
