@@ -212,16 +212,16 @@ class ODKTrace2WKT:
             delimiter = self.detect_csv_delimiter(
                 self.dlg.inputQgsFileWidget.filePath()
             )
-            delimiterIndex = self.delimiters.index(delimiter)
+            delimiter_index = self.delimiters.index(delimiter)
         else:
-            delimiterIndex = 0
+            delimiter_index = 0
 
         # Set the delimiter in the combo box
         self.dlg.delimiter_combo_box.clear()
         self.dlg.delimiter_combo_box.addItems(
             self.delimiters)
         self.dlg.delimiter_combo_box.setCurrentIndex(
-            delimiterIndex
+            delimiter_index
         )
 
         self.dlg.outputQgsFileWidget.lineEdit().\
