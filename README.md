@@ -8,7 +8,10 @@ This is a QGIS plugin that converts ODK geotraces to Well-Known Text
 ### Install from source code
 
 Download or clone this repository and put the root folder in your
-~/.local/share/QGIS/QGIS3/profiles/default/python/plugins and restart your Qgis, go to Plugins -> Manage and Install Plugins search for it and click it to activate it.
+~/.local/share/QGIS/QGIS3/profiles/default/python/plugins for Linux and Mac users and \
+C:\Users\\{Username}\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins for Window users (replace Username with you window account name)
+
+Then restart your Qgis, go to Plugins -> Manage and Install Plugins search for it and click it to activate it.
 
 Currently working on uploading this plugin to Qgis Plugins repository, soon you will be able to install it directly
 from there.
