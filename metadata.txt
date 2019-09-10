@@ -6,7 +6,7 @@ version=0.1
 author=Samweli Mwakisambwe
 email=smwltwesa6@gmail.com
 
-about=Converts geotraces from ODK to Well-Known Text, Takes a CSV file containing line strings from an OpenDataKit Geotrace, which consist of a series of text coordinates, and returns a similar CSV file with properly formatted Well-Known Text (WKT) linestrings (and points).
+about=Converts geotraces from ODK to Well-Known Text, Takes a CSV file containing line strings from an OpenDataKit Geotrace, which consist of a series of text coordinates, and returns a similar CSV file with properly formatted Well-Known Text (WKT) linestrings (and points). Funded by Ramani Huria, developed by Samweli Mwakisambwe
 
 tracker=https://github.com/ResilientDar/odktrace2wkt/issues
 repository=https://github.com/ResilientDar/odktrace2wkt

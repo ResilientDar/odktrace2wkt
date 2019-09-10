@@ -36,7 +36,9 @@ from collections import defaultdict
 
 from .qgis_utilities import (
     display_warning_message_box,
-    display_information_message_box
+    display_information_message_box,
+    temp_dir,
+    unique_filename
 )
 
 import os.path
@@ -244,8 +246,9 @@ class ODKTrace2WKT:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
             if self.dlg.outputQgsFileWidget.filePath() is '':
-                output_file = tempfile.NamedTemporaryFile(suffix='.csv')
-                output = output_file.name
+                tmpdir = temp_dir('output')
+                tmpfile = unique_filename(dir=tmpdir, suffix='.csv')
+                output = tmpfile
             else:
                 output = self.dlg.outputQgsFileWidget.filePath()
             try:
@@ -407,12 +410,14 @@ class ODKTrace2WKT:
     def loadFile(self, path, delimiter, column):
         """ Load csv file into qgis
         """
+        if not path.startswith('/'):
+            path = '/' + path
         output_file_uri = 'file://{}?delimiter={}&crs=EPSG:4326&wktField={}'.format(
             path,
             delimiter,
             column)
 
-        vlayer = QgsVectorLayer(output_file_uri, 'Output file', 'ogr')
+        vlayer = QgsVectorLayer(output_file_uri, 'Output file', 'delimitedtext')
 
         iface.addVectorLayer(output_file_uri, 'Output Layer', 'delimitedtext')
         iface.mapCanvas().refresh()
