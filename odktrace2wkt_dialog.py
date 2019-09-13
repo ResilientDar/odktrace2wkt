@@ -33,7 +33,8 @@ from .exceptions import (
 
 from qgis.PyQt.QtCore import QSettings
 
-# This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
+# This loads your .ui file so that PyQt can populate
+# your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'odktrace2wkt_dialog_base.ui'))
 

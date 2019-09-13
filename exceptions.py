@@ -35,83 +35,101 @@ class ReadLayerError(ODKTrace2WKTError):
 
 class WriteLayerError(ODKTrace2WKTError):
     """When a layer can't be written"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class BoundingBoxError(ODKTrace2WKTError):
     """For errors relating to bboxes"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class VerificationError(ODKTrace2WKTError):
     """Exception thrown by verify()
     """
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class PolygonInputError(ODKTrace2WKTError):
     """For invalid inputs to numeric polygon functions"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class PointsInputError(ODKTrace2WKTError):
     """For invalid inputs to numeric point functions"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class BoundsError(ODKTrace2WKTError):
     """For points falling outside interpolation grid"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class GetDataError(ODKTrace2WKTError):
     """When layer data cannot be obtained"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class PostProcessorError(ODKTrace2WKTError):
-    """Raised when requested import cannot be performed if QGIS is too old."""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    """Raised when requested import cannot
+    be performed if QGIS is too old.
+    """
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class WindowsError(ODKTrace2WKTError):
     """For windows specific errors."""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class GridXmlFileNotFoundError(ODKTrace2WKTError):
     """An exception for when an grid.xml could not be found"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class GridXmlParseError(ODKTrace2WKTError):
     """An exception for when something went wrong parsing the grid.xml """
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class ContourCreationError(ODKTrace2WKTError):
     """An exception for when creating contours from shakemaps goes wrong"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class InvalidLayerError(ODKTrace2WKTError):
     """Raised when a gis layer is invalid"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class ShapefileCreationError(ODKTrace2WKTError):
     """Raised if an error occurs creating the cities file"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class ZeroImpactException(ODKTrace2WKTError):
     """Raised if an impact function return zero impact"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class WrongDataTypeException(ODKTrace2WKTError):
     """Raised if expected and received data types are different"""
-    suggestion = 'Please ask the developers of ODKTrace2WKT to add a suggestion.'
+    suggestion = 'Please ask the developers '\
+                 'of ODKTrace2WKT to add a suggestion.'
 
 
 class InvalidClipGeometryError(ODKTrace2WKTError):

@@ -98,18 +98,17 @@ class ODKTrace2WKT:
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('ODKTrace2WKT', message)
 
-
     def add_action(
-        self,
-        icon_path,
-        text,
-        callback,
-        enabled_flag=True,
-        add_to_menu=True,
-        add_to_toolbar=True,
-        status_tip=None,
-        whats_this=None,
-        parent=None):
+            self,
+            icon_path,
+            text,
+            callback,
+            enabled_flag=True,
+            add_to_menu=True,
+            add_to_toolbar=True,
+            status_tip=None,
+            whats_this=None,
+            parent=None):
         """Add a toolbar icon to the toolbar.
 
         :param icon_path: Path to the icon for this action. Can be a resource
@@ -186,7 +185,6 @@ class ODKTrace2WKT:
         # will be set False in run()
         self.first_start = True
 
-
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
@@ -198,8 +196,10 @@ class ODKTrace2WKT:
     def run(self):
         """Run method that performs all the real work"""
 
-        # Create the dialog with elements (after translation) and keep reference
-        # Only create GUI ONCE in callback, so that it will only load when the plugin is started
+        # Create the dialog with elements (after translation)
+        # and keep reference
+        # Only create GUI ONCE in callback, so that it will only
+        # load when the plugin is started
         if self.first_start:
             self.first_start = False
             self.dlg = ODKTrace2WKTDialog()
@@ -323,17 +323,17 @@ class ODKTrace2WKT:
         which contains geotraces values
         """
 
-        pattern_reg = r'\b([-+]?)([\d]{1,2})(((\.)(\d+)))(\s*)' \
-                    r'([-+]?)([\d]{1,3})(((\.)(\d+)))(\s*)'\
-                    r'([-+]?)([\d]{1,2})(((\.)(\d+)))(\s*)'\
-                    r'([-+]?)([\d]{1,2})(((\.)(\d+)))\b'
+        pattern_reg = r'\b([-+]?)([\d]{1,2})(((\.)(\d+)))(\s*)'\
+                      r'([-+]?)([\d]{1,3})(((\.)(\d+)))(\s*)'\
+                      r'([-+]?)([\d]{1,2})(((\.)(\d+)))(\s*)'\
+                      r'([-+]?)([\d]{1,2})(((\.)(\d+)))\b'
 
         pattern = re.compile(pattern_reg)
 
         column = ''
 
         with open(csv_file) as csvfile:
-            reader = csv.reader(csvfile, delimiter = delimiter)
+            reader = csv.reader(csvfile, delimiter=delimiter)
 
             header = next(reader)
             # Using default dict to initialize keys with
@@ -362,7 +362,9 @@ class ODKTrace2WKT:
 
     def main(self, infile, column,
              column_name, output=None):
-        """Iterates through a CSV and writes a CSV with converted linestrings."""
+        """Iterates through a CSV and writes a CSV with
+        converted linestrings.
+        """
 
         # Avoid choking the CSV library with a long linestring
         csv.field_size_limit(100000000)
@@ -372,17 +374,20 @@ class ODKTrace2WKT:
 
         with open(infile) as line_data:
             reader = csv.reader(line_data, delimiter=delimiter)
-            of = output if output else '{}_{}.csv'.format(infile, '_results')
+            of = output if output else \
+                '{}_{}.csv'.format(infile, '_results')
             with open(of, 'w') as outfile:
                 writer = csv.writer(outfile, delimiter=delimiter)
                 header = next(reader)
-                colindex = int(column) - 1 if column else header.index(column_name)
+                colindex = int(column) - 1 if column \
+                    else header.index(column_name)
                 writer.writerow(header)
 
                 for row in reader:
                     node_string = ''.join(row[colindex])
                     outrow = row
-                    outrow[colindex] = self.wkt_linestring_from_nodes(node_string)
+                    outrow[colindex] = \
+                        self.wkt_linestring_from_nodes(node_string)
                     writer.writerow(outrow)
 
     def wkt_linestring_from_nodes(self, node_string):
@@ -397,7 +402,8 @@ class ODKTrace2WKT:
             coord_pair_list = []
             for node in nodes:
                 coords = node.strip().split()
-                if (len(coords) >= 2):  # can be >2 incl elev & precision values
+                if len(coords) >= 2:
+                    # can be >2 incl elev & precision values
                     # Reverse coords; Lon first, then Lat (as per WKT spec)
                     coord_pair = '{} {}'.format(coords[1], coords[0])
                     coord_pair_list.append(coord_pair)
@@ -412,10 +418,12 @@ class ODKTrace2WKT:
         """
         if not path.startswith('/'):
             path = '/' + path
-        output_file_uri = 'file://{}?delimiter={}&crs=EPSG:4326&wktField={}'.format(
-            path,
-            delimiter,
-            column)
+        output_file_uri = 'file://{}?delimiter={}&crs=EPSG:4326&wktField={}'.\
+            format(
+                path,
+                delimiter,
+                column
+            )
 
         vlayer = QgsVectorLayer(output_file_uri, 'Output file', 'delimitedtext')
 

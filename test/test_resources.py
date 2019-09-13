@@ -12,10 +12,8 @@ __author__ = 'smwltwesa6@gmail.com'
 __date__ = '2019-09-07'
 __copyright__ = 'Copyright 2019, Samweli Mwakisambwe'
 
-import unittest
-
 from qgis.PyQt.QtGui import QIcon
-
+import unittest
 
 
 class ODKTrace2WKTDialogTest(unittest.TestCase):
@@ -39,6 +37,3 @@ if __name__ == "__main__":
     suite = unittest.makeSuite(ODKTrace2WKTResourcesTest)
     runner = unittest.TextTestRunner(verbosity=2)
     runner.run(suite)
-
-
-
