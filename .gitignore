@@ -40,3 +40,4 @@ venv
 [temporary_file]
 __pycache__
 __pycache__.*
+symbology-style.db

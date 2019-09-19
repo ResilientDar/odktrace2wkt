@@ -36,7 +36,7 @@ def _run_tests(test_suite, package_name, with_coverage=False):
     print('########')
     if with_coverage:
         cov = coverage.Coverage(
-            source=['./'],
+            source=['.'],
             omit=['*/test/*', './definitions/*'],
         )
         cov.start()
@@ -67,3 +67,7 @@ def test_package(package='odktrace2wkt'):
     except ImportError:
         test_suite = unittest.TestSuite()
     _run_tests(test_suite, package)
+
+
+if __name__ == '__main__':
+    test_package()

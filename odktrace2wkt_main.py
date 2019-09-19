@@ -33,7 +33,6 @@ from .resources import *
 from .odktrace2wkt_dialog import ODKTrace2WKTDialog
 from collections import defaultdict
 
-
 from .qgis_utilities import (
     display_warning_message_box,
     display_information_message_box,
@@ -279,6 +278,7 @@ class ODKTrace2WKT:
                     self.dlg,
                     self.dlg.tr('Error'),
                     self.dlg.tr('{}'.format(str(exception))))
+
                 QCoreApplication.instance().setOverrideCursor(Qt.ArrowCursor)
 
     def set_inputs(self):
@@ -358,7 +358,10 @@ class ODKTrace2WKT:
                 header_count.keys(),
                 key=(lambda k: header_count[k])) if header_count else ''
 
-        return header, column, header.index(column)
+            # Default to first field if no column is found
+            index = 0 if column == '' else header.index(column)
+
+        return header, column, index
 
     def main(self, infile, column,
              column_name, output=None):

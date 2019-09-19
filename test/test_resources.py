@@ -33,6 +33,7 @@ class ODKTrace2WKTDialogTest(unittest.TestCase):
         icon = QIcon(path)
         self.assertFalse(icon.isNull())
 
+
 if __name__ == "__main__":
     suite = unittest.makeSuite(ODKTrace2WKTResourcesTest)
     runner = unittest.TextTestRunner(verbosity=2)
