@@ -234,3 +234,26 @@ def unique_filename(**kwargs):
     except OSError:
         pass
     return filename
+
+
+def enable_busy_cursor():
+    """Set the hourglass enabled and stop listening for layer changes."""
+
+    from qgis.core import QgsApplication
+    from qgis.PyQt import QtGui, QtCore
+
+    QgsApplication.instance().setOverrideCursor(
+        QtGui.QCursor(QtCore.Qt.WaitCursor)
+    )
+
+
+def disable_busy_cursor():
+    """Disable the hourglass cursor and listen for layer changes."""
+
+    from qgis.core import QgsApplication
+    from qgis.PyQt import QtCore
+
+    while QgsApplication.instance().overrideCursor() is not None and \
+            QgsApplication.instance().overrideCursor().shape() == \
+            QtCore.Qt.WaitCursor:
+        QgsApplication.instance().restoreOverrideCursor()

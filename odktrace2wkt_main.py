@@ -37,7 +37,9 @@ from .qgis_utilities import (
     display_warning_message_box,
     display_information_message_box,
     temp_dir,
-    unique_filename
+    unique_filename,
+    enable_busy_cursor,
+    disable_busy_cursor
 )
 
 import os.path
@@ -234,7 +236,6 @@ class ODKTrace2WKT:
         self.dlg.inputQgsFileWidget.fileChanged.connect(
             self.set_inputs
         )
-
         # show the dialog
         self.dlg.show()
 
@@ -242,8 +243,6 @@ class ODKTrace2WKT:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
             if self.dlg.outputQgsFileWidget.filePath() is '':
                 tmpdir = temp_dir('output')
                 tmpfile = unique_filename(dir=tmpdir, suffix='.csv')
@@ -251,7 +250,7 @@ class ODKTrace2WKT:
             else:
                 output = self.dlg.outputQgsFileWidget.filePath()
             try:
-                QCoreApplication.instance().setOverrideCursor(Qt.BusyCursor)
+                enable_busy_cursor()
 
                 self.main(
                     self.dlg.inputQgsFileWidget.filePath(),
@@ -266,20 +265,20 @@ class ODKTrace2WKT:
                     self.dlg.column_combo_box.currentText()
                 )
 
-                QCoreApplication.instance().setOverrideCursor(Qt.ArrowCursor)
-
+                disable_busy_cursor()
                 display_information_message_box(
                     self.dlg,
                     self.dlg.tr('Success'),
                     self.dlg.tr('Output created at "{}"'.format(output)))
 
             except Exception as exception:
+
+                disable_busy_cursor()
                 display_warning_message_box(
                     self.dlg,
                     self.dlg.tr('Error'),
                     self.dlg.tr('{}'.format(str(exception))))
 
-                QCoreApplication.instance().setOverrideCursor(Qt.ArrowCursor)
 
     def set_inputs(self):
         """ Set the delimiter and location column detected in the file
