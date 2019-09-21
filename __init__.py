@@ -32,5 +32,5 @@ def classFactory(iface):  # pylint: disable=invalid-name
     :type iface: QgsInterface
     """
     #
-    from .odktrace2wkt_main import ODKTrace2WKT
+    from .odktrace2wkt import ODKTrace2WKT
     return ODKTrace2WKT(iface)
