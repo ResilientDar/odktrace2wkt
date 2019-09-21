@@ -28,12 +28,12 @@ from qgis.PyQt.QtWidgets import QAction
 from qgis.core import *
 from qgis.utils import iface
 # Initialize Qt resources from file resources.py
-from .resources import *
+from resources import *
 # Import the code for the dialog
-from .odktrace2wkt_dialog import ODKTrace2WKTDialog
+from odktrace2wkt_dialog import ODKTrace2WKTDialog
 from collections import defaultdict
 
-from .qgis_utilities import (
+from qgis_utilities import (
     display_warning_message_box,
     display_information_message_box,
     temp_dir,
