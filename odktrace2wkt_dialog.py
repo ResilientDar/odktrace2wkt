@@ -26,9 +26,9 @@ import os
 
 from qgis.PyQt import uic
 from qgis.PyQt import QtWidgets
-from qgis_utilities import (
+from .qgis_utilities import (
     display_warning_message_box)
-from exceptions import (
+from .exceptions import (
     ImportDialogError)
 
 from qgis.PyQt.QtCore import QSettings

@@ -17,6 +17,8 @@ from qgis.PyQt import QtWidgets
 from qgis.PyQt.QtCore import QTranslator
 import sip
 from qgis.utils import iface
+from collections import OrderedDict
+from qgis.PyQt.QtCore import QSettings
 
 LOGGER = logging.getLogger('QGIS')
 QGIS_APP = None  # Static variable used to hold hand to running QGIS app
@@ -112,6 +114,13 @@ def get_qgis_app(requested_locale='en_US', qsetting=''):
     if not locale_match:
         """Setup internationalisation for the plugin."""
 
+        if not settings:
+            settings = QSettings()
+
+        settings.setValue('locale/userLocale',
+                           deep_convert_dict(
+                               requested_locale))
+
         locale_name = str(requested_locale).split('_')[0]
         os.environ['LANG'] = str(locale_name)
 
@@ -145,3 +154,23 @@ def get_qgis_app(requested_locale='en_US', qsetting=''):
         CANVAS.resize(QtCore.QSize(400, 400))
 
     return QGIS_APP, CANVAS, IFACE, PARENT
+
+
+def deep_convert_dict(value):
+    """Converts any OrderedDict elements in a value to
+    ordinary dictionaries, safe for storage in QSettings
+    :param value: value to convert
+    :type value: Union[dict,OrderedDict]
+    :return: dict
+    """
+    to_ret = value
+    if isinstance(value, OrderedDict):
+        to_ret = dict(value)
+
+    try:
+        for k, v in to_ret.items():
+            to_ret[k] = deep_convert_dict(v)
+    except AttributeError:
+        pass
+
+    return to_ret
